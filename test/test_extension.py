@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 import re
 import unittest
-from os import remove
 
 import markdown
 from markdown.util import etree
@@ -205,9 +204,6 @@ text2
         self.tree_processor.run(elem)
         self.assertEqual(
             etree.tostring(elem, encoding='utf-8').decode(), expectation)
-
-    def tearDown(self):
-        remove(plugin.DB_FILE.name)
 
 
 class LinkPatcherExtensionTest(markdown.Extension):

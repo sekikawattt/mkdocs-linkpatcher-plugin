@@ -52,7 +52,6 @@ class LinkPatcherPlugin(BasePlugin):
                     encoded,
                     codecs.open(dbpath, 'w', 'utf-8'),
                     ensure_ascii=False)
-        DB_FILE.close()
 
     def unicodize(self, data):
         if isinstance(data, dict):
