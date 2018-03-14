@@ -75,7 +75,7 @@ class LinkPatcherTreeProcessor(Treeprocessor):
             return
         self.db_value_map = {link['text']: link['link'] for link in all_values}
         self.db_keys_re = re.compile(
-            r'((?<=^)|(?<=\W))(%s)((?=$)|(?= )|(?=\W))' % '|'.join(
+            r'((?<=^)|(?<=\W))(%s)((?=$)|(?=\W))' % '|'.join(
                 [re.escape(k) for k in self.db_value_map.keys()]),
             re.MULTILINE)
         self.insert_patchedlink(element)

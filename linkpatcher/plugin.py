@@ -31,7 +31,6 @@ class LinkPatcherPlugin(BasePlugin):
     )
 
     def on_config(self, config):
-        self.plugin_config = config['plugins']['linkpatcher-plugin'].config
         config['markdown_extensions'].append(
             'linkpatcher.extension:LinkPatcherExtension')
         return config
@@ -41,8 +40,9 @@ class LinkPatcherPlugin(BasePlugin):
         linkpatcher_plugin_globals = LinkPatcherGlobals(page, site_navigation)
 
     def on_post_build(self, config):
-        if not self.plugin_config.get('delete_dbfile'):
-            dbpath = self.plugin_config.get('dbfile_path')
+        plugin_config = config['plugins']['linkpatcher-plugin'].config
+        if not plugin_config.get('delete_dbfile'):
+            dbpath = plugin_config.get('dbfile_path')
             if not PY2:
                 shutil.copy(DB_FILE.name, dbpath)
             else:
