@@ -12,10 +12,11 @@ pip install -e .
 mkdocs.yml
 ```yml
 plugins:
-  - linkpatcher-plugin:
+  - linkpatcher-plugin
 ```
 
 ## features
+
 ### `:` is converted into header
 ```md
 :: tuna
@@ -42,28 +43,6 @@ tuna
 <p>
 <h2 class="linkpatcher" id="linkpatcher_tuna">tuna</h2>
 <a class="linkpatcher_link" href="./index.html#linkpatcher_tuna">tuna</a></p>
-```
-### alias
-```md
-:: tuna, maguro
-maguro, tuna
-```
-↓`mkdocs build`
-```html
-<p>
-<h2 class="linkpatcher" id="linkpatcher_tuna">tuna</h2>
-<a class="linkpatcher_link" href="./index.html#linkpatcher_tuna">maguro</a>, <a class="linkpatcher_link" href="./index.html#linkpatcher_tuna">tuna</a></p>
-```
-### avoid to be extracted
-```md
-:: !description, tuna_description
-description, tuna_description
-```
-↓`mkdocs build`
-```html
-<p>
-<h2 class="linkpatcher" id="linkpatcher_description">description</h2>
-description, <a class="linkpatcher_link" href="./index.html#linkpatcher_description">tuna_description</a></p>
 ```
 
 ### link beyond pages
@@ -103,4 +82,28 @@ salt, soy, and...</p>
 Best source for me.
 Its flavor is far from <a class="linkpatcher_link" href="../index.html#linkpatcher_ingredient">soy</a>.
 See <a class="linkpatcher_link" href="../index.html#linkpatcher_ingredient">ingredient_of_soy_source</a>.</p>
+```
+
+### alias
+```md
+:: tuna, maguro
+maguro, tuna
+```
+↓`mkdocs build`
+```html
+<p>
+<h2 class="linkpatcher" id="linkpatcher_tuna">tuna</h2>
+<a class="linkpatcher_link" href="./index.html#linkpatcher_tuna">maguro</a>, <a class="linkpatcher_link" href="./index.html#linkpatcher_tuna">tuna</a></p>
+```
+
+### avoid to be extracted
+```md
+:: !description, tuna_description
+description, tuna_description
+```
+↓`mkdocs build`
+```html
+<p>
+<h2 class="linkpatcher" id="linkpatcher_description">description</h2>
+description, <a class="linkpatcher_link" href="./index.html#linkpatcher_description">tuna_description</a></p>
 ```
